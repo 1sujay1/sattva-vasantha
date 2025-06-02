@@ -394,7 +394,7 @@ background-color: #E1E3E6 !important
           placeholder="Phone/Mobile"
           required
         />
-        <input type="hidden" name="_cc" value="visupriya.udt@gmail.com,sujaymaster111@gmail.com">
+        <!-- <input type="hidden" name="_cc" value="visupriya.udt@gmail.com,sujaymaster111@gmail.com"> -->
         <input type="hidden" name="_captcha" value="false">
         <button type="submit" name="mobile" class="btn btn-warning w-100 fw-bold mb-2">
           GET CALL BACK
@@ -405,7 +405,7 @@ background-color: #E1E3E6 !important
         >
           <i class="bi bi-telephone-fill me-2"></i> +91-6364840379
         </button>
-        <div id="status" style="color: green;margin-top: 1rem;"></div>
+        <div id="status" style="margin-top: 1rem;"></div>
       </div>
     </div>
   </div>
@@ -520,25 +520,28 @@ background-color: #E1E3E6 !important
             </div>
             <div class="col-lg-2"></div>
             <div class="col-lg-5">
+              <form id="contact-form3">
                 <div class="header-contact-box" data-aos="zoom-in-up" data-aos-duration="1000">
                     <h3>Make An Enquiry</h3>
                     <div class="space32"></div>
                     <div class="input-area">
-                        <input type="text" placeholder="Full Name*">
+                        <input type="text" name="name" placeholder="Full Name*" required>
                     </div>
                     <div class="space24"></div>
                     <div class="input-area">
-                        <input type="number" placeholder="Phone Number*">
+                        <input type="number" name="phone" placeholder="Phone Number*" required>
                     </div>
                     <div class="space24"></div>
                     <div class="input-area">
-                        <textarea placeholder="Your Message*"></textarea>
+                        <textarea placeholder="Your Message*" name="message"></textarea>
                     </div>
                     <div class="space32"></div>
                     <div class="input-area text-end">
                         <button type="submit" class="header-btn11">Submit Now <i class="fa-solid fa-arrow-right"></i></button>
                     </div>
+                    <div id="status3" class="mt-3" style="margin-top: 1rem;"></div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
@@ -1711,7 +1714,7 @@ background-color: #E1E3E6 !important
                             <div class="input-area text-end">
                                 <button type="submit" class="header-btn11">Send Message <i class="fa-solid fa-arrow-right"></i></button>
                             </div>
-                            <div id="status2" style="color: green;margin-top: 1rem;"></div>
+                            <div id="status2" style="margin-top: 1rem;"></div>
                         </div>
                     </div>
                   </form>
@@ -1883,16 +1886,23 @@ background-color: #E1E3E6 !important
         const form = e.target;
         const data = new FormData(form);
 
-        fetch("https://formsubmit.co/charles@teamvintagerealty.com", {
+        fetch("https://formsubmit.co/sujaymaster111@gmail.com", {
           method: "POST",
           body: data
         })
-        .then(response => {
-          document.getElementById("status").innerText = "Thank you! Your message has been sent.";
-          form.reset();
+       .then(async response => {
+                const text =  await response.text();
+        if (text.includes("Activate Form")) {
+            showStatus("status","Form not activated. Please check your email to activate it.", "red");
+        } else if (response.ok) {
+            showStatus("status","Thank you! Your message has been sent.", "green");
+            form.reset();
+        } else {
+            showStatus("status","Oops! Something went wrong.", "red");
+        }
         })
         .catch(error => {
-          document.getElementById("status").innerText = "Oops! Something went wrong.";
+          showStatus("status","Oops! Something went wrong.", "red");
         });
 
       })
@@ -1902,20 +1912,61 @@ background-color: #E1E3E6 !important
         const form = e.target;
         const data = new FormData(form);
 
-        fetch("https://formsubmit.co/charles@teamvintagerealty.com", {
+        fetch("https://formsubmit.co/sujaymaster111@gmail.com", {
           method: "POST",
           body: data
         })
-        .then(response => {
-          document.getElementById("status2").innerText = "Thank you! Your message has been sent.";
-          form.reset();
+        .then(async response => {
+                const text =  await response.text();
+        if (text.includes("Activate Form")) {
+            showStatus("status2","Form not activated. Please check your email to activate it.", "red");
+        } else if (response.ok) {
+            showStatus("status2","Thank you! Your message has been sent.", "green");
+            form.reset();
+        } else {
+            showStatus("status2","Oops! Something went wrong.", "red");
+        }
         })
         .catch(error => {
-          document.getElementById("status2").innerText = "Oops! Something went wrong.";
+          showStatus("status2","Oops! Something went wrong.", "red");
         });
 
       })
-  
+   document.getElementById("contact-form3").addEventListener("submit", function(e) {
+        e.preventDefault(); // prevent page reload
+
+        const form = e.target;
+        const data = new FormData(form);
+
+        fetch("https://formsubmit.co/sujaymaster111@gmail.com", {
+          method: "POST",
+          body: data
+        })
+        .then(async response => {
+           // Check if response contains the "activation" keyword
+            const text =  await response.text();
+        if (text.includes("Activate Form")) {
+            showStatus("status3","Form not activated. Please check your email to activate it.", "red");
+        } else if (response.ok) {
+            showStatus("status3","Thank you! Your message has been sent.", "green");
+            form.reset();
+        } else {
+            showStatus("status3","Oops! Something went wrong.", "red");
+        }
+          
+        })
+        .catch(error => {
+          showStatus("status3","Oops! Something went wrong.", "red");
+        });
+
+      })
+      function showStatus(id,message,status ) {
+    const statusDiv = document.getElementById(id);
+    statusDiv.style.color = status; // e.g., "success", "error", etc.
+    statusDiv.textContent = message;
+    statusDiv.style.display = 'block';
+    
+}
 </script>
 <script>
   // Create anchor link

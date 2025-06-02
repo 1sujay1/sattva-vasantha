@@ -25174,3 +25174,13 @@ padding: 20px;
 .cursor-pointer{
   cursor: pointer;
 }
+#status,#status2, #status3 {
+  font-weight: bold;
+}
+.success-message {
+  color: green;
+}
+
+.error-message {
+  color: red;
+}
