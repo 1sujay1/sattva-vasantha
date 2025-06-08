@@ -6614,6 +6614,7 @@ Location:
   background: #FFF;
   box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.09);
   padding: 32px;
+  border-radius: 25px;
 }
 .hero10-section-area .header-contact-box h3 {
   color: var(--ztc-text-text-25);
