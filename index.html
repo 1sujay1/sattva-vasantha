@@ -398,7 +398,7 @@ background-color: #E1E3E6 !important
         />
         <input type="hidden" name="_cc" value="visupriya.udt@gmail.com,charles@teamvintagerealty.com,sudershancharles30@gmail.com">
         <input type="hidden" name="_captcha" value="false">
-        <button type="submit" name="mobile" class="btn btn-warning w-100 fw-bold mb-2">
+        <button type="submit" id="contact_form_btn1" name="mobile" class="btn btn-warning w-100 fw-bold mb-2">
           GET CALL BACK
         </button>
       </form>
@@ -538,7 +538,7 @@ background-color: #E1E3E6 !important
                     <input type="hidden" name="_cc" value="visupriya.udt@gmail.com,charles@teamvintagerealty.com,sudershancharles30@gmail.com">
                     <input type="hidden" name="_captcha" value="false">
                     <div class="input-area text-end">
-                        <button type="submit" class="header-btn11">Submit Now <i class="fa-solid fa-arrow-right"></i></button>
+                        <button type="submit" id="contact_form_btn3" class="header-btn11">Submit Now <i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                     <div id="status3" class="mt-3" style="margin-top: 1rem;"></div>
                 </div>
@@ -1678,7 +1678,7 @@ Gym, swimming pool, children's play area, sports courts, jogging track, landscap
                             <input type="hidden" name="_cc" value="visupriya.udt@gmail.com,charles@teamvintagerealty.com,sudershancharles30@gmail.com">
                             <input type="hidden" name="_captcha" value="false">
                             <div class="input-area text-end">
-                                <button type="submit" class="header-btn11">Send Message <i class="fa-solid fa-arrow-right"></i></button>
+                                <button type="submit" id="contact_form_btn2" class="header-btn11">Send Message <i class="fa-solid fa-arrow-right"></i></button>
                             </div>
                             <div id="status2" style="margin-top: 1rem;"></div>
                         </div>
@@ -1852,12 +1852,16 @@ Gym, swimming pool, children's play area, sports courts, jogging track, landscap
 
         const form = e.target;
         const data = new FormData(form);
-
+const submitBtn1 = document.getElementById('contact_form_btn1');
+  submitBtn1.disabled = true;
+    submitBtn1.textContent = 'Loading...';
         fetch("https://formsubmit.co/sujaymaster111@gmail.com", {//change this email to charles charles@teamvintagerealty.com
           method: "POST",
           body: data
         })
        .then(async response => {
+        submitBtn1.disabled = false;
+      submitBtn1.textContent = 'GET CALL BACK';
                 const text =  await response.text();
         if (text.includes("Activate Form")) {
             showStatus("status","Form not activated. Please check your email to activate it.", "red");
@@ -1869,6 +1873,8 @@ Gym, swimming pool, children's play area, sports courts, jogging track, landscap
         }
         })
         .catch(error => {
+          submitBtn1.disabled = false;
+      submitBtn1.textContent = 'GET CALL BACK';
           showStatus("status","Oops! Something went wrong.", "red");
         });
 
@@ -1878,12 +1884,16 @@ Gym, swimming pool, children's play area, sports courts, jogging track, landscap
 
         const form = e.target;
         const data = new FormData(form);
-
+const submitBtn2 = document.getElementById('contact_form_btn2');
+  submitBtn2.disabled = true;
+    submitBtn2.textContent = 'Loading...';
         fetch("https://formsubmit.co/sujaymaster111@gmail.com", {//change this email to charles charles@teamvintagerealty.com
           method: "POST",
           body: data
         })
         .then(async response => {
+          submitBtn2.disabled = false;
+      submitBtn2.textContent = 'Send Message';
                 const text =  await response.text();
         if (text.includes("Activate Form")) {
             showStatus("status2","Form not activated. Please check your email to activate it.", "red");
@@ -1895,6 +1905,8 @@ Gym, swimming pool, children's play area, sports courts, jogging track, landscap
         }
         })
         .catch(error => {
+          submitBtn2.disabled = false;
+      submitBtn2.textContent = 'Send Message';
           showStatus("status2","Oops! Something went wrong.", "red");
         });
 
@@ -1904,12 +1916,16 @@ Gym, swimming pool, children's play area, sports courts, jogging track, landscap
 
         const form = e.target;
         const data = new FormData(form);
-
+const submitBtn3 = document.getElementById('contact_form_btn3');
+  submitBtn3.disabled = true;
+    submitBtn3.textContent = 'Loading...';
         fetch("https://formsubmit.co/sujaymaster111@gmail.com", {//change this email to charles charles@teamvintagerealty.com
           method: "POST",
           body: data
         })
         .then(async response => {
+          submitBtn3.disabled = false;
+      submitBtn3.textContent = 'Submit Now';
            // Check if response contains the "activation" keyword
             const text =  await response.text();
         if (text.includes("Activate Form")) {
@@ -1923,6 +1939,8 @@ Gym, swimming pool, children's play area, sports courts, jogging track, landscap
           
         })
         .catch(error => {
+          submitBtn3.disabled = false;
+      submitBtn3.textContent = 'Submit Now';
           showStatus("status3","Oops! Something went wrong.", "red");
         });
 
