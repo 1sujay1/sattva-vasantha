@@ -382,7 +382,7 @@ background-color: #E1E3E6 !important
           class="img-fluid mb-3"
           style="max-height: 60px"
         />
-        <form id="contact-form">
+        <form name="bookingForm" id="booking_form">
         <input
         name="name"
           type="text"
@@ -404,8 +404,8 @@ background-color: #E1E3E6 !important
           placeholder="Phone/Mobile"
           required
         />
-        <input type="hidden" name="_cc" value="visupriya.udt@gmail.com,charles@teamvintagerealty.com,sudershancharles30@gmail.com">
-        <input type="hidden" name="_captcha" value="false">
+        <!-- <input type="hidden" name="_cc" value="visupriya.udt@gmail.com,charles@teamvintagerealty.com,sudershancharles30@gmail.com">
+        <input type="hidden" name="_captcha" value="false"> -->
         <button type="submit" id="contact_form_btn1" name="mobile" class="btn btn-warning w-100 fw-bold mb-2">
           GET CALL BACK
         </button>
@@ -415,7 +415,13 @@ background-color: #E1E3E6 !important
         >
           <i class="bi bi-telephone-fill me-2"></i> +91-6364840379
     </a>
-        <div id="status" style="margin-top: 1rem;"></div>
+        <!-- <div id="status" style="margin-top: 1rem;"></div> -->
+         <div id="success_message_col" class='mt-2'>
+                       
+                    </div>
+                    <div id="error_message" class='error'>
+                       
+                    </div>
       </div>
     </div>
   </div>
@@ -549,6 +555,12 @@ background-color: #E1E3E6 !important
                         <button type="submit" id="contact_form_btn3" class="header-btn11">Submit Now <i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                     <div id="status3" class="mt-3" style="margin-top: 1rem;"></div>
+                    <div id="success_message_col3" class='mt-2'>
+                       
+                    </div>
+                    <div id="error_message3" class='error'>
+                       
+                    </div>
                 </div>
                 </form>
             </div>
@@ -1689,6 +1701,12 @@ Gym, swimming pool, children's play area, sports courts, jogging track, landscap
                                 <button type="submit" id="contact_form_btn2" class="header-btn11">Send Message <i class="fa-solid fa-arrow-right"></i></button>
                             </div>
                             <div id="status2" style="margin-top: 1rem;"></div>
+                             <div id="success_message_col2" class='mt-2'>
+                       
+                    </div>
+                    <div id="error_message2" class='error'>
+                       
+                    </div>
                         </div>
                     </div>
                   </form>
@@ -1854,6 +1872,8 @@ Gym, swimming pool, children's play area, sports courts, jogging track, landscap
     });
   });
 </script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/contact.js"></script>
 <script>
    document.getElementById("contact-form").addEventListener("submit", function(e) {
         e.preventDefault(); // prevent page reload
